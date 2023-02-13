@@ -1,0 +1,45 @@
+services:
+  langgeneral:
+    image: postgres
+    environment: 
+      POSTGRES_DB: langgeneral
+      POSTGRES_USER: langteam
+      POSTGRES_PASSWORD: 'Aa1234'
+    ports:
+      - 5433:5432
+    volumes:
+      - general-volume:/var/lib/postgresql/data
+
+  langgeneral-flyway:
+    image: flyway/flyway
+    command:  -connectRetries=10 migrate
+    volumes:
+      - ./db/sql/langgeneral:/flyway/sql
+      - ./db/conf/langgeneral:/flyway/conf
+    # depends_on:
+    #   - langgeneral
+
+  langtracking:
+    image: postgres
+    environment: 
+      POSTGRES_DB: langtracking
+      POSTGRES_USER: langteam
+      POSTGRES_PASSWORD: 'Aa1234'
+    ports:
+      - 5434:5432
+    volumes:
+      - tracking-volume:/var/lib/postgresql/data
+    
+  langtracking-flyway:
+    image: flyway/flyway
+    command: -connectRetries=10 migrate
+    volumes:
+      - ./db/sql/langtracking:/flyway/sql
+      - ./db/conf/langtracking:/flyway/conf
+    # depends_on:
+    #   - langtracking
+volumes:
+  general-volume: #
+  tracking-volume:
+
+# Refer to: https://heavylion.medium.com/implementing-flyway-with-docker-8ae256ce634f

@@ -1,0 +1,2 @@
+ALTER TABLE Language
+ALTER COLUMN name TYPE varchar(128);
