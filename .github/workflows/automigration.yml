@@ -2,7 +2,7 @@ name: Auto-migration
 on:
   push:
     branches:
-      - prod
+      - main
 jobs:
   general:
     runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
           url: ${{ secrets.GENERAL_URL }}
           user: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASSWORD }}
-          locations: ./db/sql/langeneral
+          locations: filesystem:./db/sql/langeneral
       - run: echo 'testing'
 
   tracking:
@@ -25,5 +25,5 @@ jobs:
           url: ${{ secrets.TRACKING_URL }}
           user: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASSWORD }}
-          locations: ./db/sql/langtracking
+          locations: filesystem:./db/sql/langtracking
       - run: echo 'testing'
