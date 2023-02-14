@@ -44,7 +44,7 @@ create sequence ImagePost_seq_id owned by ImagePost.postId;
 ALTER TABLE ImagePost ALTER COLUMN postId set default nextval('ImagePost_seq_id');
 create sequence AudioPost_seq_id owned by AudioPost.postId;
 ALTER TABLE AudioPost ALTER COLUMN postId set default nextval('AudioPost_seq_id');
-create sequence SharePost_seq_id owned by SharePost.langId;
+create sequence SharePost_seq_id owned by SharePost.postId;
 ALTER TABLE SharePost ALTER COLUMN postId set default nextval('SharePost_seq_id');
 create sequence AudioRoom_seq_id owned by AudioRoom.roomId;
 ALTER TABLE AudioRoom ALTER COLUMN roomId set default nextval('AudioRoom_seq_id');
