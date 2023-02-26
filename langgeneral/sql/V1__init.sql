@@ -6,8 +6,6 @@
 -- DROP DATABASE langex_general;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Set time zone
-
 CREATE TABLE Language (
    langId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
    name varchar(255)
