@@ -34,7 +34,7 @@ Step 3: **Populate your database**: In this step, first ensure that your databas
 ```console
 user@root:~$  docker network create {network_name}
 
-user@root:~$: docker run --name langdb -e POSTGRES_DB=langchat -e POSTGRES_USER=langteam -e POSTGRES_PASSWORD=Aa1234 -d postgres
+user@root:~$: docker run --network={network_name} --name langdb -e POSTGRES_DB=langchat -e POSTGRES_USER=langteam -e POSTGRES_PASSWORD=Aa1234 -d postgres
 ``` 
 
 then populate your newly created database using:
