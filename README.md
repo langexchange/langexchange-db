@@ -18,27 +18,29 @@ The environment variables is different up to what database's name you are using 
 
 Step 2: **Build the image of flyway using for the database that you want to access**: First access to subdirectory that has the name of database you want to use from root directory, then builing image as below:
 
-```bash
-user@root cd ./{subdir}
-user@root docker build -t {image_name}/{your_tag} .
+```console
+user@root:~$  cd ./{subdir}
+user@root:~$ docker build -t {image_name}/{your_tag} .
 ```
 
 If you dont want to do so, you can directly pull and use my image from remote which has the name syntax `narutosimaha/flyway-{dbname}`, for instance I want to use langchat db: 
 
-```bash
-user@root docker pull narutosimaha/flyway-langchat
+```console
+user@root:~$  docker pull narutosimaha/flyway-langchat
 ```
 
 Step 3: **Populate your database**: In this step, first ensure that your database is active that is it is hosted on production, in case you want to populate data on production, or running as a container in a particular network (using this network enabling your flyway to find your db container), in case you want to populate data on development. The development case is illustrated as follow:
 
-```bash
-user@root docker run network
-```
+```console
+user@root:~$  docker network create {network_name}
+
+user@root:~$: docker run --name langdb -e POSTGRES_DB=langchat -e POSTGRES_USER=langteam -e POSTGRES_PASSWORD=Aa1234 -d postgres
+``` 
 
 then populate your newly created database using:
 
-```bash
-user@root docker run network {image_name} 
+```console
+user@root:~$ docker run --network={network_name} --env-file={path_to_env_file} {image_name}
 ```
 
 ## 2. Running using docker compose.
