@@ -13,7 +13,7 @@ jobs:
           url: ${{ secrets.GENERAL_URL }}
           user: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASSWORD }}
-          locations: filesystem:./db/sql/langgeneral
+          locations: filesystem:./langgeneral/sql
       - run: echo 'testing'
 
   tracking:
@@ -25,5 +25,5 @@ jobs:
           url: ${{ secrets.TRACKING_URL }}
           user: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASSWORD }}
-          locations: filesystem:./db/sql/langtracking
+          locations: filesystem:./langtracking/sql
       - run: echo 'testing'
