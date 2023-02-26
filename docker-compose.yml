@@ -1,45 +1,31 @@
+version: '3'
 services:
-  langgeneral:
-    image: postgres
-    environment: 
-      POSTGRES_DB: langgeneral
-      POSTGRES_USER: langteam
-      POSTGRES_PASSWORD: 'Aa1234'
-    ports:
-      - 5433:5432
-    volumes:
-      - general-volume:/var/lib/postgresql/data
+  flyway:
+    image: narutosimaha/flyway-langchat
+    environment:
+      - LANGCHAT_DB=langchat
+      - LANGCHAT_URL=jdbc:postgresql://langdb:5432
+      - POSTGRES_USER=langteam
+      - POSTGRES_PASSWORD=Aa1234
+    # entrypoint: /bin/bash
+    # command: [
+    #   "-c",
+    #   "/flyway/flyway -url=$$LANGCHAT_DB_URL/$$LANGCHAT_DB -user=$$POSTGRES_USER -password=$$POSTGRES_PASSWORD -connectRetries=60 migrate"
+    # ]
+    depends_on:
+      - langdb
 
-  langgeneral-flyway:
-    image: flyway/flyway
-    command:  -connectRetries=10 migrate
-    volumes:
-      - ./db/sql/langgeneral:/flyway/sql
-      - ./db/conf/langgeneral:/flyway/conf
-    # depends_on:
-    #   - langgeneral
-
-  langtracking:
+  langdb:
     image: postgres
-    environment: 
-      POSTGRES_DB: langtracking
-      POSTGRES_USER: langteam
-      POSTGRES_PASSWORD: 'Aa1234'
+    environment:
+      - POSTGRES_DB=langchat
+      - POSTGRES_USER=langteam
+      - POSTGRES_PASSWORD=Aa1234
     ports:
       - 5434:5432
     volumes:
-      - tracking-volume:/var/lib/postgresql/data
-    
-  langtracking-flyway:
-    image: flyway/flyway
-    command: -connectRetries=10 migrate
-    volumes:
-      - ./db/sql/langtracking:/flyway/sql
-      - ./db/conf/langtracking:/flyway/conf
-    # depends_on:
-    #   - langtracking
-volumes:
-  general-volume: #
-  tracking-volume:
+      - langchat:/var/lib/postgresql/data
+    restart: always
 
-# Refer to: https://heavylion.medium.com/implementing-flyway-with-docker-8ae256ce634f
+volumes:
+  langchat:
