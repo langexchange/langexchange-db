@@ -478,3 +478,21 @@ CREATE TABLE TutorReq (
 	text varchar(2048),
 	is_qualified bit(1) DEFAULT B'0'
 );
+
+
+-- WITH myconstants (eng, vi, nid) as (
+--    values (uuid_generate_v4(), uuid_generate_v4(), uuid_generate_v4())
+-- )
+
+-- -- Some users sample
+-- INSERT INTO Language(langId, name)
+-- VALUES (eng, "en-EN");
+
+-- INSERT INTO Language(langId, name)
+-- VALUES (vi, "vi-VN");
+
+-- INSERT INTO NotiBox(boxId)
+-- VALUES (nid);
+
+INSERT INTO Users(email,   )
+VALUES (nid);
