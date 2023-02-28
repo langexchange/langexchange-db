@@ -13,8 +13,6 @@ LANGCHAT_URL=jdbc:postgresql://${HOST}:${PORT}
 POSTGRES_USER=${USER}
 POSTGRES_PASSWORD=${USER_PASSWORD}
 ```
-The environment variables is different up to what database's name you are using that because it can avoid the inappropriate use of wrong image, at the same time, allow you to include just one env file for all db containers in case you want to run all databases simutaneously. Don't be worry, I put each env file sample in each database directory ``./{dbname}/*.env``, you can refer to it to look around.
-
 
 Step 2: **Build the image of flyway using for the database that you want to access**: First access to subdirectory that has the name of database you want to use from root directory, then builing image as below:
 
@@ -52,8 +50,8 @@ services:
   flyway:
     image: narutosimaha/flyway-langchat
     environment:
-      - LANGCHAT_DB=langchat
-      - LANGCHAT_URL=jdbc:postgresql://langdb:5432
+      - DATABASE_DB=langchat
+      - DATABASE_URL=jdbc:postgresql://langdb:5432
       - POSTGRES_USER=langteam
       - POSTGRES_PASSWORD=Aa1234
     depends_on:

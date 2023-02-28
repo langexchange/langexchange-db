@@ -493,6 +493,3 @@ CREATE TABLE TutorReq (
 
 -- INSERT INTO NotiBox(boxId)
 -- VALUES (nid);
-
-INSERT INTO Users(email,   )
-VALUES (nid);

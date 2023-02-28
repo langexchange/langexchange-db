@@ -3,8 +3,8 @@ services:
   flyway:
     image: narutosimaha/flyway-langchat
     environment:
-      - LANGCHAT_DB=langchat
-      - LANGCHAT_URL=jdbc:postgresql://langdb:5432
+      - DATABASE_DB=langchat
+      - DATABASE_URL=jdbc:postgresql://langdb:5432
       - POSTGRES_USER=langteam
       - POSTGRES_PASSWORD=Aa1234
     # entrypoint: /bin/bash
