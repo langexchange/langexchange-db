@@ -46,7 +46,7 @@ CREATE TABLE Users (
 	first_name varchar(64),
 	middle_name varchar(64),
 	last_name  varchar(64),
-	user_name varchar(32);
+	user_name varchar(32),
 	gender varchar(5),	
 	introduction varchar(1024),
 	is_tutor bit(1) DEFAULT B'0',
