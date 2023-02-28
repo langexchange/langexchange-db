@@ -46,6 +46,7 @@ CREATE TABLE Users (
 	first_name varchar(64),
 	middle_name varchar(64),
 	last_name  varchar(64),
+	user_name varchar(32),
 	gender varchar(5),	
 	introduction varchar(1024),
 	is_tutor bit(1) DEFAULT B'0',
@@ -251,13 +252,15 @@ CREATE TABLE GroupPost (
 );
 
 CREATE TABLE ImagePost (
-	postId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	imagePostId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	postId uuid NOT NULL,
 	FOREIGN KEY(postId) REFERENCES Post(postId),
 	url varchar(256)
 );
 
 CREATE TABLE AudioPost (
-	postId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	audioPostId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	postId uuid NOT NULL,
 	FOREIGN KEY(postId) REFERENCES Post(postId),
 	url varchar(256)
 );
@@ -350,19 +353,22 @@ CREATE TABLE Comment (
 );
 
 CREATE TABLE AudioCmt (
-	commentId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	audioCmtId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	commentId uuid NOT NULL,
 	FOREIGN KEY(commentId) REFERENCES Comment(commentId),
 	url varchar(256) NOT NULL
 );
 
 CREATE TABLE ImageCmt (
-	commentId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	imageCmtId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	commentId uuid NOT NULL,
 	FOREIGN KEY(commentId) REFERENCES Comment(commentId),
 	url varchar(256) NOT NULL
 );
 
 CREATE TABLE CorrectCmt (
-	commentId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	correctCmtId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+	commentId uuid NOT NULL,
 	FOREIGN KEY(commentId) REFERENCES Comment(commentId),
 	correct_text varchar(2048)
 );
@@ -493,3 +499,9 @@ CREATE TABLE TutorReq (
 
 -- INSERT INTO NotiBox(boxId)
 -- VALUES (nid);
+<<<<<<< HEAD
+=======
+
+-- INSERT INTO Users(email,   )
+-- VALUES (nid);
+>>>>>>> origin/main
