@@ -1,2 +1,2 @@
 ALTER TABLE Users
-ALTER COLUMN gender varchar(7);
+ALTER COLUMN gender TYPE varchar(7);
