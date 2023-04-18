@@ -53,6 +53,6 @@ CREATE TABLE NotiboxSharing (
 	FOREIGN KEY(boxId) REFERENCES NotiBox(boxId),
     notiId uuid NOT NULL,
     FOREIGN KEY(notiId) REFERENCES SharingNotifications(notiId),
-	PRIMARY KEY(packageid,vocabId)
+	PRIMARY KEY(boxId,notiId)
 );
 
