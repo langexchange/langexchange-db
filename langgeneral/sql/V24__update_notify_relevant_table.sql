@@ -2,8 +2,8 @@ ALTER TABLE NotiBox
 ADD COLUMN userId uuid,
 ADD CONSTRAINT fk_user_notibox FOREIGN KEY(userId) REFERENCES Users(userId);
 
-DROP TABLE NotiType;
 DROP TABLE Notifications;
+DROP TABLE NotiType;
 
 CREATE TABLE PostNotifications (
 	notiId uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
